@@ -1,6 +1,6 @@
 import requests
 import streamlit as st
-
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 st.set_page_config(
     page_title="Agriculture Scheme Assistant",
@@ -36,12 +36,9 @@ if st.button("Ask"):
         try:
 
             response = requests.post(
-                "http://127.0.0.1:8000/ask",
-                json={
-                    "question": question
-                }
+                  f"{API_URL}/ask",
+                     json={"question": question}
             )
-
             result = response.json()
 
 
